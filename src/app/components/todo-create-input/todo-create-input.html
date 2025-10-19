@@ -1,0 +1,32 @@
+<mat-card
+  class="card"
+  appearance="outlined">
+  <mat-card-header class="header">
+    <div class="resize-handle_container">
+      <app-resize-handle
+        [widthMode]="'half'"
+        (dragStart)="onDragStart()"
+        (drag)="onDrag($event)"
+        (dragEnd)="onDragEnd()"
+      ></app-resize-handle>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <mat-form-field class="todo-name-input">
+      <mat-label>Todo name</mat-label>
+      <input matInput placeholder="TODO name here">
+    </mat-form-field>
+
+    <mat-form-field class="todo-description-input">
+      <mat-label>Leave a Description</mat-label>
+      <textarea matInput placeholder="You description here"></textarea>
+    </mat-form-field>
+
+    <p>Something here</p>
+    <p>Something here</p>
+    <p>Something here</p>
+  </mat-card-content>
+  <mat-card-footer class="footer">
+
+  </mat-card-footer>
+</mat-card>

@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  width: 100%;
+
+  .resize-handle {
+    cursor: grab;
+    background-color: #fff;
+    height: 0.3rem;
+    width: 100%;
+
+    &_half {
+      width: 50%;
+    }
+
+    &.grabbed {
+      cursor: grabbing;
+    }
+  }
+}

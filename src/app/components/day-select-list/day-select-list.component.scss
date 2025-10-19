@@ -1,0 +1,62 @@
+.day-select-list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% - 2px);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .days-batch_container {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    width: 100%;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(7, 1fr);
+
+    .day {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 50%;
+
+      &:hover {
+        .dayNumber:not(.dayNumber--active) {
+          background-color: #c0c0c0 !important;
+        }
+      }
+
+      .dayName {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0vw;
+        color: rgb(142, 142, 142);
+        font-size: 0.8rem;
+      }
+
+      .dayNumber {
+        cursor: pointer;
+        width: 3rem;
+        height: 3rem;
+
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--active {
+          background-color: orange;
+        }
+      }
+    }
+  }
+}

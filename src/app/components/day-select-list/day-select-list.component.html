@@ -1,0 +1,14 @@
+<div class="day-select-list">
+  @for(batch of dayLabelBatches; track $index) {
+    <div class="days-batch_container">
+      @for(dayLabel of batch; track dayLabel.id) {
+        <section class="day" (click)="daySelected.emit(dayLabel.id)">
+          <h3 class="dayName">{{ dayLabel.dayName.toLocaleUpperCase() }}</h3>
+          <p class="dayNumber" [class.dayNumber--active]="dayLabel.id === currentDateId()">
+            {{ dayLabel.dayNumber }}
+          </p>
+        </section>
+      }
+    </div>
+  }
+</div>
