@@ -1,8 +1,8 @@
 // TODO: possibly separate if into InjectionToken
 import moment from 'moment';
-import { DateManager } from './date-manager';
-import { DateId } from '../../date-id';
-import { Injectable } from '@angular/core';
+import {DateManager} from './date-manager';
+import {DateId} from '../../date-id';
+import {Injectable} from '@angular/core';
 import {DayLabel, DayLabelConfig} from '../../../shared/components/day-select-list/day-label';
 
 @Injectable()
