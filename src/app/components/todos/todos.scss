@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+
+  .content {}
+
+  .todo-create-input-popup {
+    width: 100%;
+    height: fit-content;
+    min-height: 5rem;
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    overflow-y: scroll;
+  }
+}

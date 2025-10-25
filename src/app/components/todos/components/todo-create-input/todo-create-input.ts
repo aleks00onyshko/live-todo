@@ -1,8 +1,8 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, inject, signal} from '@angular/core';
+import { Component} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {ResizeHandle} from './resize-handle/resize-handle';
-import {Resizable} from '../../core/resizable';
+import {Resizable} from '../../../../core/resizable';
 
 @Component({
   selector: 'app-todo-create-input',

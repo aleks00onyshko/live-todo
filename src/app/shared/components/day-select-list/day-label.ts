@@ -1,4 +1,4 @@
-import {DateId} from '../../core/date-id';
+import {DateId} from '../../../core/date-id';
 
 export class DayLabel {
   public readonly id: DateId;

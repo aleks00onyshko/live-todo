@@ -1,5 +1,5 @@
 import {DateId} from '../../date-id';
-import {DayLabel} from '../../../components/day-select-list/day-label';
+import {DayLabel} from '../../../shared/components/day-select-list/day-label';
 
 export abstract class DateManager {
   abstract getCurrentDate(): Date;
