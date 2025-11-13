@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import { DayLabel } from './day-label';
-import {DateManager} from '../../../core/services/date-service/date-manager';
+import {DayLabel} from './day-label';
+import {DateManager} from '../../../core/services/date/date-manager';
 
 @Injectable()
 export class DaySelectListService {

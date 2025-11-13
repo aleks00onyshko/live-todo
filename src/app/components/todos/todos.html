@@ -1,5 +1,12 @@
 <div class="content">
   <app-day-select-list [currentDateId]="currentDateId()"></app-day-select-list>
+
+  <div class="todos-container">
+    @for (todo of todosStore.todos(); track todo.id) {
+
+      <p>{{ todo.name }} {{ todo.id }}</p>
+    }
+  </div>
 </div>
 <div class="todo-create-input-popup">
   <app-todo-create-input></app-todo-create-input>

@@ -1,3 +1,4 @@
-export interface Entity<T = string> {
-  id: T;
+export interface Entity<ID> {
+  id: ID;
+  typeKey: string;
 }

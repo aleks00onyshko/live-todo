@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import {Component} from '@angular/core';
+import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {ResizeHandle} from './resize-handle/resize-handle';
 import {Resizable} from '../../../../core/resizable';
@@ -12,6 +12,6 @@ import {Resizable} from '../../../../core/resizable';
 })
 export class TodoCreateInput extends Resizable {
   constructor() {
-    super({ minimumSize: 200, maximumSize: window.innerHeight - 30 });
+    super({minimumSize: 200, maximumSize: window.innerHeight - 30});
   }
 }
