@@ -1,4 +1,4 @@
-import {Entity} from '../entity';
+import {Entity} from 'data-provider-core';
 
 export class Todo implements Entity<string> {
   public static typeKey = 'TODO';

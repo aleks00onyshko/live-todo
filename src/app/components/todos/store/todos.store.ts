@@ -3,8 +3,8 @@ import {Todo} from '../../../core/models/todo/todo';
 import {inject} from '@angular/core';
 import {rxMethod} from '@ngrx/signals/rxjs-interop';
 import {pipe, switchMap} from 'rxjs';
-import {DataProvider} from '../../../core/services/data/data-provider';
 import {map} from 'rxjs/operators';
+import {DataProvider} from 'data-provider-core';
 
 type TodosState = {
   todos: Todo[];
@@ -25,10 +25,11 @@ export const TodosStore = signalStore(
     loadTodos: rxMethod<string>(
       pipe(
         // TODO: make query string to contain filters
-        switchMap((querystring: string) =>
-          dataProviderService.listenToCollectionChanges<Todo>('todos').pipe(map(todos => {
-            patchState(store, {todos, loading: false})
-          }))
+        switchMap((querystring: string) => {
+            return dataProviderService.listenToCollectionChanges<Todo>('todos').pipe(map(todos => {
+              patchState(store, {todos, loading: false})
+            }))
+          }
         )
       )
     )

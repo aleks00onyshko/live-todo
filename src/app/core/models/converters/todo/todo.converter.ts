@@ -1,5 +1,5 @@
-import {EntityConverter, EntityConverterConfig} from '../converter';
 import {Todo} from '../../todo/todo';
+import {EntityConverter, EntityConverterConfig} from 'data-provider-core';
 
 export class TodoConverter implements EntityConverter<string, Todo> {
   public toPlainObject(todo: Todo): Todo {

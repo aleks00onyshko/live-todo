@@ -4,9 +4,13 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
-import {provideEntityConverters} from './core/models/converters';
-import {provideDataProvider} from './core/services/data';
 import {provideDateManager} from './core/services/date';
+import {TodoConverterConfig} from './core/models/converters/todo/todo.converter';
+import {
+  FirestoreDataProviderService,
+  provideDataProvider,
+  provideEntityConverters
+} from 'data-provider-firebase-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideFirestore(() => getFirestore()),
     provideDateManager(),
-    provideEntityConverters(),
-    provideDataProvider()
+    provideEntityConverters([TodoConverterConfig]),
+    provideDataProvider(FirestoreDataProviderService)
   ]
 };
