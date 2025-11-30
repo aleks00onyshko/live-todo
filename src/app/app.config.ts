@@ -9,8 +9,9 @@ import {TodoConverterConfig} from './core/models/converters/todo/todo.converter'
 import {
   FirestoreDataProviderService,
   provideDataProvider,
-  provideEntityConverters
+  provideEntityConverters, provideIdGenerator
 } from 'data-provider-firebase-angular';
+import {IdGeneratorImplementation} from '@positional_advantage_coder/id-generator';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +32,7 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()),
     provideDateManager(),
     provideEntityConverters([TodoConverterConfig]),
+    provideIdGenerator(IdGeneratorImplementation),
     provideDataProvider(FirestoreDataProviderService)
   ]
 };
