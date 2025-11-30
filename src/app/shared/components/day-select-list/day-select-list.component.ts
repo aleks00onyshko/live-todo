@@ -4,7 +4,7 @@ import {
   inject,
   input, output
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DayLabel } from './day-label';
 import { DaySelectListService } from './day-select-list.service';
@@ -13,7 +13,7 @@ import {DateId} from '../../../core/date-id';
 @Component({
   selector: 'app-day-select-list',
   standalone: true,
-  imports: [CommonModule, ScrollingModule],
+  imports: [ScrollingModule],
   templateUrl: './day-select-list.component.html',
   styleUrls: ['./day-select-list.component.scss'],
   providers: [DaySelectListService],
