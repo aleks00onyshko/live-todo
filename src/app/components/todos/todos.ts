@@ -4,6 +4,7 @@ import { TodoCreateInput } from './components/todo-create-input/todo-create-inpu
 import { DateId } from '../../core/date-id';
 import { TodosStore } from './store/todos.store';
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
+import {Todo} from '../../core/models/todo/todo';
 
 @Component({
   selector: 'app-todos',
@@ -17,6 +18,11 @@ export class Todos implements OnInit {
   protected readonly currentDateId = signal<DateId>('19-10-2025');
 
   public ngOnInit() {
-    this.todosStore.loadTodos("")
+    this.todosStore.loadTodos("");
   }
+
+  public todoSubmitted(data: Pick<Todo, 'name' | 'description'>): void {
+    this.todosStore.addTodo(data);
+  }
+
 }

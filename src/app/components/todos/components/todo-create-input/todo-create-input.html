@@ -14,12 +14,12 @@
   <mat-card-content class="content">
     <mat-form-field class="todo-name-input">
       <mat-label>Todo name</mat-label>
-      <input matInput placeholder="TODO name here">
+      <input [field]="addTodoForm.name" matInput placeholder="TODO name here">
     </mat-form-field>
 
     <mat-form-field class="todo-description-input">
       <mat-label>Leave a Description</mat-label>
-      <textarea matInput placeholder="You description here"></textarea>
+      <textarea [field]="addTodoForm.description" (keydown.enter)="$event.preventDefault(); submitTodo()" matInput placeholder="You description here"></textarea>
     </mat-form-field>
 
     <p>Something here</p>

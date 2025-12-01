@@ -5,10 +5,12 @@ export class Todo implements Entity<string> {
   public typeKey: string;
   public id!: string;
   public name!: string;
+  public description!: string;
 
-  constructor({id, name}: Omit<Todo, 'typeKey'>) {
+  constructor({id, name, description}: Omit<Todo, 'typeKey'>) {
     this.typeKey = Todo.typeKey;
     this.id = id
     this.name = name;
+    this.description = description;
   }
 }
