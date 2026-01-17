@@ -12,6 +12,7 @@ import {
   provideEntityConverters, provideIdGenerator
 } from 'data-provider-firebase-angular';
 import {IdGeneratorImplementation} from '@positional_advantage_coder/id-generator';
+import {provideFocusEngine} from './core/focus';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
     provideDateManager(),
     provideEntityConverters([TodoConverterConfig]),
     provideIdGenerator(IdGeneratorImplementation),
-    provideDataProvider(FirestoreDataProviderService)
+    provideDataProvider(FirestoreDataProviderService),
+    provideFocusEngine()
   ]
 };

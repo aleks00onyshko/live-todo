@@ -1,3 +1,6 @@
 @for (todo of todos(); track todo.id) {
-<app-todo [todo]="todo"></app-todo>
+  <app-todo
+    [todo]="todo"
+    (click)="todoClicked.emit(todo)"
+  ></app-todo>
 }

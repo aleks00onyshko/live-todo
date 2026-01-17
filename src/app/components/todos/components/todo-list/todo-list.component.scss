@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: scroll;
+
+  app-todo:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

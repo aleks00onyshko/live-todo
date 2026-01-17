@@ -1,9 +1,15 @@
-<div class="content">
+<div class="content" appFocusBackground>
   <app-day-select-list [currentDateId]="currentDateId()"></app-day-select-list>
   <div class="todos-container">
-    <app-todo-list [todos]="todosStore.todos()"></app-todo-list>
+    <app-todo-list
+      [todos]="todosStore.todos()"
+      [activeTodo]="todosStore.activeTodo() ?? undefined"
+      (todoClicked)="todosStore.setActiveTodo($event)"></app-todo-list>
   </div>
 </div>
 <div class="todo-create-input-popup">
-  <app-todo-create-input (todoSubmitted)="todoSubmitted($event)"></app-todo-create-input>
+  <app-todo-create-input
+    [todo]="todosStore.activeTodo() ?? undefined"
+    (todoSubmitted)="todoSubmitted($event)"
+  ></app-todo-create-input>
 </div>

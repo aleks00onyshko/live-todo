@@ -2,35 +2,37 @@ import {getState, patchState, signalStore, withComputed, withMethods, withState}
 import {Todo} from '../../../core/models/todo/todo';
 import {inject} from '@angular/core';
 import {rxMethod} from '@ngrx/signals/rxjs-interop';
-import {EMPTY, pipe, switchMap} from 'rxjs';
+import {pipe, switchMap} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {DataProvider, EntityConverter} from 'data-provider-core';
-import {ENTITY_CONVERTER_MAP_TOKEN} from 'data-provider-firebase-angular';
+import {DataProvider} from 'data-provider-core';
 
 type TodosState = {
   todos: Todo[];
   loading: boolean;
   error: Error | null;
+  activeTodo: Todo | null;
 }
 
 const initialState: TodosState = {
   todos: [],
   loading: false,
   error: null,
+  activeTodo: null
 };
 
 export const TodosStore = signalStore(
   withState(initialState),
   withComputed(() => ({})),
-  withMethods((store,
-               dataProviderService = inject(DataProvider),
-               convertersMap = inject(ENTITY_CONVERTER_MAP_TOKEN)) => ({
+  withMethods((
+    store,
+    dataProviderService = inject(DataProvider)
+  ) => ({
     loadTodos: rxMethod<string>(
       pipe(
         // TODO: make query string to contain filters
         switchMap((querystring: string) => {
             return dataProviderService.listenToCollectionChanges<Todo>('todos').pipe(map(todos => {
-              patchState(store, {todos, loading: false})
+              patchState(store, {todos, loading: false});
             }))
           }
         )
@@ -39,26 +41,25 @@ export const TodosStore = signalStore(
     addTodo: rxMethod<Pick<Todo, 'name' | 'description'>>(
       pipe(
         switchMap((todoData: Pick<Todo, 'name' | 'description'>) => {
-          const todoConverter = convertersMap.get(Todo.typeKey)! as EntityConverter<string, Todo>;
-          const draftEntity = todoConverter.createDraft(todoData);
+          return dataProviderService.createEntity<Todo>('todos', Todo.typeKey, todoData).pipe(
+            map((todo) => {
+              if (todo) {
+                const state = getState(store);
 
-          if(draftEntity) {
-            return dataProviderService.createEntity<Todo>('todos', draftEntity).pipe(
-              map((todo) => {
-                if(todo) {
-                  const state = getState(store);
+                patchState(store, {todos: [...state.todos, todo]})
+              }
 
-                  patchState(store, { todos: [ ...state.todos, todo ] })
-                }
-
-                return todo;
-              })
-            )
-          }
-
-          return EMPTY;
+              return todo;
+            })
+          )
         })
       )
-    )
+    ),
+    setActiveTodo(todo: Todo): void {
+      patchState(store, {activeTodo: {...todo}})
+    },
+    resetActiveTodo(): void {
+      patchState(store, {activeTodo: null})
+    }
   })),
 );

@@ -3,15 +3,17 @@
   min-height: 100vh;
   position: relative;
 
-  .content {}
+  .content {
+  }
 
   .todo-create-input-popup {
     width: 100%;
     height: fit-content;
     min-height: 5rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    padding: 1rem;
+    padding: 0.75rem 0.75rem 0;
     overflow-y: scroll;
+    z-index: 2;
   }
 }

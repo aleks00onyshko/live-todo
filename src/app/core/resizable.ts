@@ -1,5 +1,5 @@
 import {ElementRef, HostBinding, Directive, inject} from '@angular/core';
-import { signal } from '@angular/core';
+import {signal} from '@angular/core';
 
 export interface ResizeConfiguration {
   minimumSize: number;
@@ -10,14 +10,17 @@ export interface ResizeConfiguration {
 export abstract class Resizable {
   #elRef = inject(ElementRef)
 
+  protected isDragging = signal<boolean>(false);
   protected initialHeight = signal<number | null>(null);
 
   @HostBinding('style.height')
   cardHeight: string | null = null;
 
-  protected constructor(protected resizeConfiguration?: ResizeConfiguration) {}
+  protected constructor(protected resizeConfiguration?: ResizeConfiguration) {
+  }
 
   public onDragStart(): void {
+    this.isDragging.set(true);
     this.initialHeight.set(this.#elRef.nativeElement.offsetHeight);
   }
 
@@ -30,13 +33,14 @@ export abstract class Resizable {
   }
 
   public onDragEnd(): void {
+    this.isDragging.set(false);
     this.initialHeight.set(null);
   }
 
   private calculateNewHeight(initialHeight: number, movingDiff: number, resizeConfiguration?: ResizeConfiguration): number {
     let newHeight = initialHeight - movingDiff;
 
-    if(resizeConfiguration) {
+    if (resizeConfiguration) {
       return Math.max(Math.min(newHeight, resizeConfiguration.maximumSize), resizeConfiguration.minimumSize);
     }
 

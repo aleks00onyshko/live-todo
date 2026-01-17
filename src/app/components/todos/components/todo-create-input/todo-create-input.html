@@ -19,12 +19,9 @@
 
     <mat-form-field class="todo-description-input">
       <mat-label>Leave a Description</mat-label>
-      <textarea [field]="addTodoForm.description" (keydown.enter)="$event.preventDefault(); submitTodo()" matInput placeholder="You description here"></textarea>
+      <textarea [field]="addTodoForm.description" (keydown.enter)="$event.preventDefault(); submitTodo()" matInput
+                placeholder="You description here"></textarea>
     </mat-form-field>
-
-    <p>Something here</p>
-    <p>Something here</p>
-    <p>Something here</p>
   </mat-card-content>
   <mat-card-footer class="footer">
 
