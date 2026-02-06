@@ -3,11 +3,11 @@ import {FocusArea} from './focus-area';
 import {signal} from '@angular/core';
 
 export class FocusEngineService implements FocusEngine {
-  public focusedGraphPart = signal<FocusedGraphPart | undefined>(undefined);
+  public readonly graph = new Map<FocusArea, Set<FocusArea>>();
+  public readonly registry = new Map<string, FocusArea>();
+  public readonly pendingConnections = new Map<string, Set<string>>;
 
-  private readonly graph = new Map<FocusArea, Set<FocusArea>>();
-  private readonly registry = new Map<string, FocusArea>();
-  private readonly pendingConnections = new Map<string, Set<string>>;
+  public focusedGraphPart = signal<FocusedGraphPart | undefined>(undefined);
 
   public register(areaId: string, area: FocusArea, connectedIds?: string[]): void {
     this.registry.set(areaId, area);

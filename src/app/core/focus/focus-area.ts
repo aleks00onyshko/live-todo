@@ -1,7 +1,7 @@
 import {FocusEngine} from './focus-engine';
 import {Signal} from '@angular/core';
 
-export interface FocusAreaDirectiveConfig {
+export interface FocusAreaConfig {
   areaId: string;
   connectedIds: string[];
 }
@@ -14,7 +14,7 @@ export abstract class FocusArea {
 
   abstract focus(): void;
 
-  abstract initialize(config: FocusAreaDirectiveConfig): void;
+  abstract initialize(config: FocusAreaConfig): void;
 
   abstract destroy(): void;
 }

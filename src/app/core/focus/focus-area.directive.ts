@@ -1,4 +1,4 @@
-import {FocusArea, FocusAreaDirectiveConfig} from './focus-area';
+import {FocusArea, FocusAreaConfig} from './focus-area';
 import {
   computed,
   DestroyRef,
@@ -21,7 +21,7 @@ export abstract class FocusAreaDirective implements FocusArea {
     return this.focusEngine.isActive(this);
   })
 
-  public initialize({areaId, connectedIds}: FocusAreaDirectiveConfig) {
+  public initialize({areaId, connectedIds}: FocusAreaConfig) {
     this.id = areaId;
 
     this.focusEngine.register(this.id, this, connectedIds);

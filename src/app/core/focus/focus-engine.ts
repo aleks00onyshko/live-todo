@@ -7,6 +7,9 @@ export interface FocusedGraphPart {
 }
 
 export abstract class FocusEngine {
+  abstract readonly graph: Map<FocusArea, Set<FocusArea>>;
+  abstract readonly registry: Map<string, FocusArea>;
+  abstract readonly pendingConnections: Map<string, Set<string>>;
   abstract readonly focusedGraphPart: Signal<FocusedGraphPart | undefined>;
 
   abstract isActive(area: FocusArea): boolean;

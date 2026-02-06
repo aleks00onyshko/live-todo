@@ -13,7 +13,7 @@ import {
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {Field, form} from '@angular/forms/signals';
-import {FocusArea, FocusAreaDirectiveConfig} from '../../../../core/focus/focus-area';
+import {FocusArea, FocusAreaConfig} from '../../../../core/focus/focus-area';
 import {FocusEngine} from '../../../../core/focus/focus-engine';
 import {Todo} from '../../../../core/models/todo/todo';
 import {Resizable, ResizeConfiguration} from '../../../../core/resizable';
@@ -87,7 +87,7 @@ export class TodoCreateInput extends Resizable implements FocusArea {
     this.clearForm();
   }
 
-  public initialize({areaId, connectedIds}: FocusAreaDirectiveConfig) {
+  public initialize({areaId, connectedIds}: FocusAreaConfig) {
     this.id = areaId;
     this.focusEngine.register(this.id, this, connectedIds);
 
